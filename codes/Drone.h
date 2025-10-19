@@ -14,9 +14,9 @@ class Drone {
         //Getters
         string getName();
         int getID();
-        string* getTasks();
-        int* getInitPosition();
-        int (*getTaskPositions())[2];
+        string* getTasks();         //  we need a pointer here to return the array
+        int* getInitPosition();     //  we need a pointer here to return the array
+        int (*getTaskPositions())[2]; //  we need a pointer here to return the 2D array
 
         //Setters
         void setName(string name);
@@ -35,7 +35,6 @@ class Drone {
         //Operator overloads
         void operator<<(Drone& d2); //copy all attributes of d2 into this object
         void operator-(Drone& d2);  //swap task and task position between objects (init position is excluded)
-
 };
 #endif
 
