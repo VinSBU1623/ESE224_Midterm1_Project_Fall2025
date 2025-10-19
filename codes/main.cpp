@@ -46,8 +46,6 @@ int main () {
         i++;
     }
 
-
-
     //user inferface menu options
     cout << "Menu Options:" << endl;
     cout << "1. Sort Drones By Name\n2. Sort Drones By ID\n3. Sort Drones By Position\n4. Randomize Drone Order\n5. Add Drone\n6. Retrieve a drone\n7. Search Drone By name\n8. Search Drone by ID\n9. Write Depot to file\n10. Swap Drone Data\n11. Insert Drone Task\n12. Copy-Paste Drone\n13. Display All Drones' names\n14. Sort Drone Data Ascending\n15. Sort Drone Data Descending\n16. Exit" << endl;
@@ -86,7 +84,7 @@ int main () {
             cout << "Enter Drone name to search: ";
             cin >> name;
             depot.sortByName();
-            
+
             int foundIndex = depot.searchDroneByName(name);
             if (foundIndex >= 0) {
                 cout << "Drone \"" << name << "\" found." << endl;
@@ -154,6 +152,9 @@ int main () {
             break;
     }
     infile.close();
+    outfile.close();
+
+    return 0;
 
 }
 
