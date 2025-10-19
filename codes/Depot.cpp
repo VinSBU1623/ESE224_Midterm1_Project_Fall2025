@@ -59,6 +59,38 @@ void Depot::sortByPosition(){
     }
 }
 
-int searchDroneByName(string& name){
+int Depot::searchDroneByName(string& name){
+    int left = 0;
+    int right = drones.size() - 1;
+    while (left <= right) {
+        int mid = (left + right) / 2;
+        if (drones[mid].getName() == name){
+            return mid;
+        }
+        else if (drones[mid].getName() < name){
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }
+    }
+    return -1;
+}
+int Depot::searchDroneByID(int id){
+    int left = 0;
+    int right = drones.size() - 1;
+    while (left <= right) {
+        int mid = (left + right) / 2;
+        if (drones[mid].getID() == id){
+            return mid;
+        }
+        else if (drones[mid].getID() < id){
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }
+    }
+    return -1;
+}
+void Depot::swapDroneData(int index1, int index2){
     
 }
