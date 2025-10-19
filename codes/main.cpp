@@ -15,12 +15,38 @@ int main () {
         return 1;
     }
 
-
     Depot depot;
+    string name;
+    int ID;
+    int init_position[2];
+    string tasks[5];
+    int task_positions[5][2];
+
+    int i = 0;
   
-    while(){ //reads 10 drones
+    while(infile >> name >> ID >> init_position[0] >> init_position[1] >> 
+          tasks[0] >> task_positions[0][0] >> task_positions[0][1] >>
+          tasks[1] >> task_positions[1][0] >> task_positions[1][1] >>
+          tasks[2] >> task_positions[2][0] >> task_positions[2][1] >>
+          tasks[3] >> task_positions[3][0] >> task_positions[3][1] >>
+          tasks[4] >> task_positions[4][0] >> task_positions[4][1] >> "\n")
+    { //reads 10 drones
+        if (i >= 10) {
+            break; //only read first 10 drones
+        }
         // Process each line and add to depot
+        depot.getDrone(i).setName(name);
+        depot.getDrone(i).setID(ID);
+        depot.getDrone(i).setInitPositionAtIndex(init_position[0], 0);
+        depot.getDrone(i).setInitPositionAtIndex(init_position[1], 1);
+        for (int j = 0; j < 5; j++) {
+            depot.getDrone(i).setTaskAtIndex(tasks[j], j);
+            depot.getDrone(i).setTaskPositionAtIndex(task_positions[j][0], task_positions[j][1], j);
+        }
+        i++;
     }
+
+
 
     //user inferface menu options
     cout << "Menu Options:" << endl;
@@ -29,7 +55,7 @@ int main () {
     int choice;
     cin >> choice;
 
-    string name;
+    
     int id, id1, id2, idx;
 
     switch (choice){
@@ -94,3 +120,16 @@ int main () {
     infile.close();
 
 }
+
+/*
+A real drone control system must be user-friendly for operators. In this project, you will design a
+menu-driven interface that mimics the role of a dispatcher, who uses software to issue commands
+to drones. Through this interface, you will demonstrate the ability to connect all the system
+components—Drone, Depot, and operations—into a coherent application.
+Input:
+- Your main program should read exactly 10 drones from Drones.txt(for additional drones
+in the input file, simply ignore them), create one depot object to hold them, and store
+each information into its corresponding place.
+- Format: name, ID, init_position, 5 task names and positions, blank lines separate each
+drone
+*/
