@@ -139,6 +139,7 @@ void Depot::writeDepotToFile(){
         }
         fout << endl;
     }
+    fout.close();
 }
 /*
 A drone fleet cannot be managed one by one—it requires a central control hub (Depot) to oversee
