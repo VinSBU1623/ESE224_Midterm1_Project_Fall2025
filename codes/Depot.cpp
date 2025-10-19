@@ -3,6 +3,8 @@
 #include <cmath>
 #include <cstdlib>
 #include <vector>
+#include <ctime>
+#include <fstream>
 using namespace std;
 
 
@@ -94,11 +96,51 @@ int Depot::searchDroneByID(int id){
 void Depot::swapDroneData(int index1, int index2){
     // Models real-time mission handoff—two drones exchange tasks& task positions
     drones[index1] - drones[index2];
-    
 }
 
+void Depot::copyDrone(int index1, int index2){
+    drones.at(index2)<<drones.at(index1);
+}
 
+void Depot::insertDroneTask(int droneidx, int taskidx, string& task, int task_pos[2]){
+    //todo
+}
+void Depot::sortDroneDataAscending(int idx){
+    drones.at(idx).sortByAscending();
+}
+void Depot::sortDroneDataDescending(int idx){
+    drones.at(idx).sortByDescending();
+}
+void Depot::randomizeOrder(){ //Unsure
+    srand(time(0));
+    for (int i = 0; i < drones.size(); i++){
+        int newpos = rand() % drones.size();
+        swap(drones.at(i), drones.at(newpos));
+    }
+}
+void Depot::printAllNames(){
+    for (Drone d : drones){
+        cout << d.getName() << endl;
+    }
+}
+void Depot::writeDepotToFile(){
+    ofstream fout("Depot.txt");
+    for (Drone d : drones){
+        fout << d.getName() << " " << d.getID() << " ";
 
+        int* initPos = d.getInitPosition();
+        fout << initPos[0] << " " << initPos[1] << " ";
+
+        string* tasks = d.getTasks();
+        int (*taskPositions)[2] = d.getTaskPositions();
+        
+        for (int i = 0; i < 5; i++){
+            fout << tasks[i] << " " << taskPositions[i][0] << " " << taskPositions[i][1] << " ";
+        }
+        fout << endl;
+    }
+    fout.close();
+}
 /*
 A drone fleet cannot be managed one by one—it requires a central control hub (Depot) to oversee
 the group. In this project, the Depot class acts as a manager. It handles batch operations like
