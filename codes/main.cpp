@@ -29,7 +29,7 @@ int main () {
           tasks[1] >> task_positions[1][0] >> task_positions[1][1] >>
           tasks[2] >> task_positions[2][0] >> task_positions[2][1] >>
           tasks[3] >> task_positions[3][0] >> task_positions[3][1] >>
-          tasks[4] >> task_positions[4][0] >> task_positions[4][1] >> "\n")
+          tasks[4] >> task_positions[4][0] >> task_positions[4][1] >> ws)
     { //reads 10 drones
         if (i >= 10) {
             break; //only read first 10 drones
