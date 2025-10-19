@@ -38,7 +38,6 @@ class Drone {
 };
 #endif
 
-
 /*
 Each drone is like an employee in a company: it has an identity, an initial position, tasks, and task
 positions. For a drone delivery system, storing these attributes (name, ID, tasks, init_position, task
