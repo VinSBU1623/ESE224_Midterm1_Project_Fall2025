@@ -55,41 +55,59 @@ int main () {
     int choice;
     cin >> choice;
 
-    
-    int id, id1, id2, idx;
+    int id, id1, id2, idx, idx2, taskpos[2];
 
     switch (choice){
         case 1: // Sort Drones By Name
             depot.sortByName();
+            cout << "Drones sorted by name." << endl;
+            depot.printAllNames();
             break;
         case 2: // Sort Drones By ID
             depot.sortByID();
+            cout << "Drones sorted by ID." << endl;
+            depot.printAllNames();
             break;
         case 3: // Sort Drones By Position
             depot.sortByPosition();
+            cout << "Drones sorted by position." << endl;
+            depot.printAllNames();
             break;
         case 4: // Randomize Drone Order
             depot.randomizeOrder();
+            cout << "Drones order randomized." << endl;
+            depot.printAllNames();
             break;
         case 5: // Add Drone
-            cout << "Enter Drone name: ";
-
             break;
         case 6: // Retrieve a drone
-            cout << "Enter Drone to retrieve: ";
-
             break;
         case 7: // Search Drone By name
             cout << "Enter Drone name to search: ";
             cin >> name;
-            depot.searchDroneByName(name);
+            depot.sortByName();
+            
+            int foundIndex = depot.searchDroneByName(name);
+            if (foundIndex >= 0) {
+                cout << "Drone \"" << name << "\" found." << endl;
+            } else {
+                cout << "Drone \"" << name << "\" not found." << endl;
+            }
             break;
         case 8: // Search Drone by ID
             cout << "Enter Drone ID to search: ";
             cin >> id;
-            depot.searchDroneByID(id);
+            depot.sortByID();
+
+            int foundIndex = depot.searchDroneByID(id);
+            if (foundIndex >= 0) {
+                cout << "Drone \"" << id << "\" found." << endl;
+            } else {
+                cout << "Drone \"" << id << "\" not found." << endl;
+            }
             break;
         case 9: // Write Depot to file
+            depot.writeDepotToFile();
             break;
         case 10: // Swap Drone Data
             cout << "which two drones do you want to swap?\n" << endl;
@@ -117,7 +135,7 @@ int main () {
             cin >> idx;
             cout << "Enter index of destination drone: ";
             cin >> idx2;
-            depot.copyPasteDrone(idx, idx2);
+            depot.copyDrone(idx, idx2);
             break;
         case 13: // Display All Drones' names
             depot.printAllNames();
