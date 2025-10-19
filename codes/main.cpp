@@ -46,9 +46,11 @@ int main () {
             depot.randomizeOrder();
             break;
         case 5: // Add Drone
+            cout << "Enter Drone name: ";
 
             break;
         case 6: // Retrieve a drone
+            cout << "Enter Drone to retrieve: ";
 
             break;
         case 7: // Search Drone By name
@@ -72,8 +74,24 @@ int main () {
             depot.swapDroneData(id1, id2);
             break;
         case 11: // Insert Drone Task
+            cout << "Enter drone index: ";
+            //int droneidx, int taskidx, string& task, int task_pos[2]
+            cin >> idx;
+            cout << "Enter task index: ";
+            cin >> idx2;
+            cout << "Enter task name: ";
+            cin >> name;
+            cout << "Enter task position (x y): ";
+            cin >> taskpos[0] >> taskpos[1];
+            depot.insertDroneTask(idx, idx2, name, taskpos);
             break;
         case 12: // Copy-Paste Drone
+            cout << "which drone do you want to copy-paste?\n" << endl;
+            cout << "Enter index of source drone: ";
+            cin >> idx;
+            cout << "Enter index of destination drone: ";
+            cin >> idx2;
+            depot.copyPasteDrone(idx, idx2);
             break;
         case 13: // Display All Drones' names
             depot.printAllNames();
