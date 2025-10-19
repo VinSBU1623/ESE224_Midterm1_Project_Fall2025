@@ -20,7 +20,7 @@ string* Drone::getTasks() {
 int* Drone::getInitPosition() {
     return init_position;
 }
-int (*Drone::getTaskPositions())[2] {
+int (*Drone::getTaskPositions())[2] { //why is the asterik there?: because we are returning a pointer to an array of 2 integers
     return task_positions;
 }
 
