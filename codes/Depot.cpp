@@ -126,7 +126,18 @@ void Depot::printAllNames(){
 void Depot::writeDepotToFile(){
     ofstream fout("Depot.txt");
     for (Drone d : drones){
+        fout << d.getName() << " " << d.getID() << " ";
+
+        int* initPos = d.getInitPosition();
+        fout << initPos[0] << " " << initPos[1] << " ";
+
+        string* tasks = d.getTasks();
+        int (*taskPositions)[2] = d.getTaskPositions();
         
+        for (int i = 0; i < 5; i++){
+            fout << tasks[i] << " " << taskPositions[i][0] << " " << taskPositions[i][1] << " ";
+        }
+        fout << endl;
     }
 }
 /*
