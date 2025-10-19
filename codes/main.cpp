@@ -9,54 +9,106 @@ using namespace std;
 
 int main () {
     ifstream infile("Drone.txt");
-    if(!infile){
-        cout << "Error opening file!" << endl;
+    ofstream outfile("Output.txt");
+    if(!infile || !outfile){
+        cout << "Error opening files!" << endl;
         return 1;
     }
 
     Depot depot;
-    string line;
-    while(getline(infile, line)){
+    string name;
+    int ID;
+    int init_position[2];
+    string tasks[5];
+    int task_positions[5][2];
+
+    int i = 0;
+  
+    while(infile >> name >> ID >> init_position[0] >> init_position[1] >> 
+          tasks[0] >> task_positions[0][0] >> task_positions[0][1] >>
+          tasks[1] >> task_positions[1][0] >> task_positions[1][1] >>
+          tasks[2] >> task_positions[2][0] >> task_positions[2][1] >>
+          tasks[3] >> task_positions[3][0] >> task_positions[3][1] >>
+          tasks[4] >> task_positions[4][0] >> task_positions[4][1] >> "\n")
+    { //reads 10 drones
+        if (i >= 10) {
+            break; //only read first 10 drones
+        }
         // Process each line and add to depot
+        depot.getDrone(i).setName(name);
+        depot.getDrone(i).setID(ID);
+        depot.getDrone(i).setInitPositionAtIndex(init_position[0], 0);
+        depot.getDrone(i).setInitPositionAtIndex(init_position[1], 1);
+        for (int j = 0; j < 5; j++) {
+            depot.getDrone(i).setTaskAtIndex(tasks[j], j);
+            depot.getDrone(i).setTaskPositionAtIndex(task_positions[j][0], task_positions[j][1], j);
+        }
+        i++;
     }
+
+
 
     //user inferface menu options
     cout << "Menu Options:" << endl;
-    cout << "1. Sort Drones By Name\n2.Sort Drones By ID\n3.Sort Drones By Position\n4. Randomize Drone Order\n5. Add Drone\n6. Retrieve a drone\n7. Search Drone By name\n8. Search Drone by ID\n9.Write Depot to file\n10. Swap Drone Data\n11. Insert Drone Task\n12. Copy-Paste Drone\n13. Display All Drones' names\n14. Sort Drone Data Ascending\n15. Sort Drone Data Descending\n16. Exit" << endl;
+    cout << "1. Sort Drones By Name\n2. Sort Drones By ID\n3. Sort Drones By Position\n4. Randomize Drone Order\n5. Add Drone\n6. Retrieve a drone\n7. Search Drone By name\n8. Search Drone by ID\n9. Write Depot to file\n10. Swap Drone Data\n11. Insert Drone Task\n12. Copy-Paste Drone\n13. Display All Drones' names\n14. Sort Drone Data Ascending\n15. Sort Drone Data Descending\n16. Exit" << endl;
     cout << "Enter a number value choice: " << endl;
     int choice;
     cin >> choice;
 
+    
+    int id, id1, id2, idx;
+
     switch (choice){
         case 1: // Sort Drones By Name
+            depot.sortByName();
             break;
         case 2: // Sort Drones By ID
+            depot.sortByID();
             break;
         case 3: // Sort Drones By Position
+            depot.sortByPosition();
             break;
         case 4: // Randomize Drone Order
+            depot.randomizeOrder();
             break;
         case 5: // Add Drone
+
             break;
         case 6: // Retrieve a drone
+
             break;
         case 7: // Search Drone By name
+            cout << "Enter Drone name to search: ";
+            cin >> name;
+            depot.searchDroneByName(name);
             break;
         case 8: // Search Drone by ID
+            cout << "Enter Drone ID to search: ";
+            cin >> id;
+            depot.searchDroneByID(id);
             break;
         case 9: // Write Depot to file
             break;
         case 10: // Swap Drone Data
+            cout << "which two drones do you want to swap?\n" << endl;
+            cout << "Enter ID of first drone: ";
+            cin >> id1;
+            cout << "Enter ID of second drone: ";
+            cin >> id2;
+            depot.swapDroneData(id1, id2);
             break;
         case 11: // Insert Drone Task
             break;
         case 12: // Copy-Paste Drone
             break;
         case 13: // Display All Drones' names
+            depot.printAllNames();
             break;
         case 14: // Sort Drone Data Ascending
+            depot.sortDroneDataAscending(idx);
             break;
         case 15: // Sort Drone Data Descending
+            depot.sortDroneDataDescending(idx);
             break;
         case 16: // Exit
             cout << "Exiting program." << endl;
@@ -68,3 +120,16 @@ int main () {
     infile.close();
 
 }
+
+/*
+A real drone control system must be user-friendly for operators. In this project, you will design a
+menu-driven interface that mimics the role of a dispatcher, who uses software to issue commands
+to drones. Through this interface, you will demonstrate the ability to connect all the system
+components—Drone, Depot, and operations—into a coherent application.
+Input:
+- Your main program should read exactly 10 drones from Drones.txt(for additional drones
+in the input file, simply ignore them), create one depot object to hold them, and store
+each information into its corresponding place.
+- Format: name, ID, init_position, 5 task names and positions, blank lines separate each
+drone
+*/
