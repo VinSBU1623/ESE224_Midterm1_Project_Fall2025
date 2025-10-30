@@ -1,3 +1,4 @@
+// Depot.cpp
 #include "Depot.h"
 #include "Drone.h"
 #include <cmath>
@@ -48,11 +49,12 @@ void Depot::sortByPosition(){
     for (int i = 0; i < drones.size() - 1; i++) {
         int minIndex = i;
         for (int j = i + 1; j < drones.size(); j++) {
-            // if (drones[j].get() < drones[minIndex].getInitPosition()) { //NEED TO FIND CLOSEST DRONE
-            //     minIndex = j;
-            // }
+            if (sqrt(pow(drones[j].getInitPosition()[0], 2) + pow(drones[j].getInitPosition()[1], 2)) < 
+                sqrt(pow(drones[minIndex].getInitPosition()[0], 2) + pow(drones[minIndex].getInitPosition()[1], 2))) {
+                minIndex = j;
+            }
         }
-        //swap
+        //swap 
         if (minIndex != i) {
             Drone temp = drones[i];
             drones[i] = drones[minIndex];
@@ -95,7 +97,7 @@ int Depot::searchDroneByID(int id){
 }
 void Depot::swapDroneData(int index1, int index2){
     // Models real-time mission handoff—two drones exchange tasks& task positions
-    drones[index1] - drones[index2];
+    drones.at(index1) - drones.at(index2);
 }
 
 void Depot::copyDrone(int index1, int index2){
@@ -104,7 +106,10 @@ void Depot::copyDrone(int index1, int index2){
 
 void Depot::insertDroneTask(int droneidx, int taskidx, string& task, int task_pos[2]){
     //todo
+    drones.at(droneidx).setTaskAtIndex(task, taskidx);
+    drones.at(droneidx).setTaskPositionAtIndex(task_pos[0], task_pos[1], taskidx);
 }
+
 void Depot::sortDroneDataAscending(int idx){
     drones.at(idx).sortByAscending();
 }
