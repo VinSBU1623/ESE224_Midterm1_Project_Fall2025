@@ -9,8 +9,12 @@
 using namespace std;
 
 
-void Depot::addDrone(Drone& d1){drones.push_back(d1);}
-Drone& Depot::getDrone(int index){return drones.at(index);}
+void Depot::addDrone(Drone& d1){
+    drones.push_back(d1);
+}
+Drone& Depot::getDrone(int index){
+    return drones.at(index);
+}
 void Depot::sortByName(){
     for (int i = 0; i < drones.size() - 1; i++) {
         int minIndex = i;
