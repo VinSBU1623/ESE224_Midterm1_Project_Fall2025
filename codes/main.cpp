@@ -1,3 +1,4 @@
+// main.cpp
 #include "Drone.h"
 #include "Depot.h"
 #include <iostream>
@@ -46,16 +47,17 @@ int main () {
         i++;
     }
 
-
-
     //user inferface menu options
     cout << "Menu Options:" << endl;
     cout << "1. Sort Drones By Name\n2. Sort Drones By ID\n3. Sort Drones By Position\n4. Randomize Drone Order\n5. Add Drone\n6. Retrieve a drone\n7. Search Drone By name\n8. Search Drone by ID\n9. Write Depot to file\n10. Swap Drone Data\n11. Insert Drone Task\n12. Copy-Paste Drone\n13. Display All Drones' names\n14. Sort Drone Data Ascending\n15. Sort Drone Data Descending\n16. Exit" << endl;
     cout << "Enter a number value choice: " << endl;
     int choice;
-    cin >> choice;
 
     int id, id1, id2, idx, idx2, taskpos[2];
+
+    cin >> choice;
+
+
 
     switch (choice){
         case 1: // Sort Drones By Name
@@ -79,8 +81,13 @@ int main () {
             depot.printAllNames();
             break;
         case 5: // Add Drone
+            depot.addDrone(depot.getDrone(i)); //assuming adding a new drone at index i
+            cout << "Drone added." << endl;
             break;
         case 6: // Retrieve a drone
+            cout << "Enter index of drone to retrieve: ";
+            cin >> idx;
+            depot.getDrone(idx).displayDrone();
             break;
         case 7: // Search Drone By name
             cout << "Enter Drone name to search: ";
@@ -102,7 +109,8 @@ int main () {
             int foundIndex = depot.searchDroneByID(id);
             if (foundIndex >= 0) {
                 cout << "Drone \"" << id << "\" found." << endl;
-            } else {
+            } 
+            else {
                 cout << "Drone \"" << id << "\" not found." << endl;
             }
             break;
@@ -158,6 +166,8 @@ int main () {
 }
 
 /*
+g++ main.cpp Drone.cpp Depot.cpp -o a 
+
 A real drone control system must be user-friendly for operators. In this project, you will design a
 menu-driven interface that mimics the role of a dispatcher, who uses software to issue commands
 to drones. Through this interface, you will demonstrate the ability to connect all the system
