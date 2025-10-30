@@ -34,15 +34,19 @@ int main () {
         if (i >= 10) {
             break; //only read first 10 drones
         }
-        // Process each line and add to depot
-        depot.getDrone(i).setName(name);
-        depot.getDrone(i).setID(ID);
-        depot.getDrone(i).setInitPositionAtIndex(init_position[0], 0);
-        depot.getDrone(i).setInitPositionAtIndex(init_position[1], 1);
+
+        // Construct a temporary Drone, populate it, then add to depot
+        Drone d;
+        d.setName(name);
+        d.setID(ID);
+        d.setInitPositionAtIndex(init_position[0], 0);
+        d.setInitPositionAtIndex(init_position[1], 1);
         for (int j = 0; j < 5; j++) {
-            depot.getDrone(i).setTaskAtIndex(tasks[j], j);
-            depot.getDrone(i).setTaskPositionAtIndex(task_positions[j][0], task_positions[j][1], j);
+            d.setTaskAtIndex(tasks[j], j);
+            d.setTaskPositionAtIndex(task_positions[j][0], task_positions[j][1], j);
         }
+
+        depot.addDrone(d);
         i++;
     }
 
@@ -80,9 +84,10 @@ int main () {
             break;
         case 6: // Retrieve a drone
             break;
-        case 7: // Search Drone By name
+        case 7: { // Search Drone By name
             cout << "Enter Drone name to search: ";
             cin >> name;
+            // binary search requires the vector to be sorted by name first
             depot.sortByName();
 
             int foundIndex = depot.searchDroneByName(name);
@@ -91,19 +96,19 @@ int main () {
             } else {
                 cout << "Drone \"" << name << "\" not found." << endl;
             }
-            break;
-        case 8: // Search Drone by ID
+        } break;
+        case 8: { // Search Drone by ID
             cout << "Enter Drone ID to search: ";
             cin >> id;
             depot.sortByID();
 
-            int foundIndex = depot.searchDroneByID(id);
-            if (foundIndex >= 0) {
-                cout << "Drone \"" << id << "\" found." << endl;
+            int foundIndexID = depot.searchDroneByID(id);
+            if (foundIndexID >= 0) {
+                cout << "Drone with ID " << id << " found." << endl;
             } else {
-                cout << "Drone \"" << id << "\" not found." << endl;
+                cout << "Drone with ID " << id << " not found." << endl;
             }
-            break;
+        } break;
         case 9: // Write Depot to file
             depot.writeDepotToFile();
             break;
