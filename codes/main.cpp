@@ -93,7 +93,7 @@ int main () {
             cout << "Enter Drone name to search: ";
             cin >> name;
             depot.sortByName();
-            
+
             int foundIndex = depot.searchDroneByName(name);
             if (foundIndex >= 0) {
                 cout << "Drone \"" << name << "\" found." << endl;
@@ -162,6 +162,9 @@ int main () {
             break;
     }
     infile.close();
+    outfile.close();
+
+    return 0;
 
 }
 
