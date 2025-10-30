@@ -55,115 +55,117 @@ int main () {
     cout << "Menu Options:" << endl;
     cout << "1. Sort Drones By Name\n2. Sort Drones By ID\n3. Sort Drones By Position\n4. Randomize Drone Order\n5. Add Drone\n6. Retrieve a drone\n7. Search Drone By name\n8. Search Drone by ID\n9. Write Depot to file\n10. Swap Drone Data\n11. Insert Drone Task\n12. Copy-Paste Drone\n13. Display All Drones' names\n14. Sort Drone Data Ascending\n15. Sort Drone Data Descending\n16. Exit" << endl;
     cout << "Enter a number value choice: " << endl;
-    int choice;
+    int choice = 0;
 
     int id, id1, id2, idx, idx2, taskpos[2];
 
-    cin >> choice;
+    
 
 
+    while (choice != 16){
+        cin >> choice;
+        switch (choice){
+            case 1: // Sort Drones By Name
+                depot.sortByName();
+                cout << "Drones sorted by name." << endl;
+                depot.printAllNames();
+                break;
+            case 2: // Sort Drones By ID
+                depot.sortByID();
+                cout << "Drones sorted by ID." << endl;
+                depot.printAllNames();
+                break;
+            case 3: // Sort Drones By Position
+                depot.sortByPosition();
+                cout << "Drones sorted by position." << endl;
+                depot.printAllNames();
+                break;
+            case 4: // Randomize Drone Order
+                depot.randomizeOrder();
+                cout << "Drones order randomized." << endl;
+                depot.printAllNames();
+                break;
+            case 5: // Add Drone
+                depot.addDrone(depot.getDrone(i)); //assuming adding a new drone at index i
+                cout << "Drone added." << endl;
+                break;
+            case 6: // Retrieve a drone
+                cout << "Enter index of drone to retrieve: ";
+                cin >> idx;
+                depot.getDrone(idx).displayDrone();
+                break;
+            case 7: { // Search Drone By name
+                cout << "Enter Drone name to search: ";
+                cin >> name;
+                // binary search requires the vector to be sorted by name first
+                depot.sortByName();
 
-    switch (choice){
-        case 1: // Sort Drones By Name
-            depot.sortByName();
-            cout << "Drones sorted by name." << endl;
-            depot.printAllNames();
-            break;
-        case 2: // Sort Drones By ID
-            depot.sortByID();
-            cout << "Drones sorted by ID." << endl;
-            depot.printAllNames();
-            break;
-        case 3: // Sort Drones By Position
-            depot.sortByPosition();
-            cout << "Drones sorted by position." << endl;
-            depot.printAllNames();
-            break;
-        case 4: // Randomize Drone Order
-            depot.randomizeOrder();
-            cout << "Drones order randomized." << endl;
-            depot.printAllNames();
-            break;
-        case 5: // Add Drone
-            depot.addDrone(depot.getDrone(i)); //assuming adding a new drone at index i
-            cout << "Drone added." << endl;
-            break;
-        case 6: // Retrieve a drone
-            cout << "Enter index of drone to retrieve: ";
-            cin >> idx;
-            depot.getDrone(idx).displayDrone();
-            break;
-        case 7: { // Search Drone By name
-            cout << "Enter Drone name to search: ";
-            cin >> name;
-            // binary search requires the vector to be sorted by name first
-            depot.sortByName();
+                int foundIndex = depot.searchDroneByName(name);
+                if (foundIndex >= 0) {
+                    cout << "Drone \"" << name << "\" found." << endl;
+                } else {
+                    cout << "Drone \"" << name << "\" not found." << endl;
+                }
+            } break;
+            case 8: { // Search Drone by ID
+                cout << "Enter Drone ID to search: ";
+                cin >> id;
+                depot.sortByID();
 
-            int foundIndex = depot.searchDroneByName(name);
-            if (foundIndex >= 0) {
-                cout << "Drone \"" << name << "\" found." << endl;
-            } else {
-                cout << "Drone \"" << name << "\" not found." << endl;
-            }
-        } break;
-        case 8: { // Search Drone by ID
-            cout << "Enter Drone ID to search: ";
-            cin >> id;
-            depot.sortByID();
-
-            int foundIndexID = depot.searchDroneByID(id);
-            if (foundIndexID >= 0) {
-                cout << "Drone with ID " << id << " found." << endl;
-            } else {
-                cout << "Drone with ID " << id << " not found." << endl;
-            }
-        } break;
-        case 9: // Write Depot to file
-            depot.writeDepotToFile();
-            break;
-        case 10: // Swap Drone Data
-            cout << "which two drones do you want to swap?\n" << endl;
-            cout << "Enter ID of first drone: ";
-            cin >> id1;
-            cout << "Enter ID of second drone: ";
-            cin >> id2;
-            depot.swapDroneData(id1, id2);
-            break;
-        case 11: // Insert Drone Task
-            cout << "Enter drone index: ";
-            //int droneidx, int taskidx, string& task, int task_pos[2]
-            cin >> idx;
-            cout << "Enter task index: ";
-            cin >> idx2;
-            cout << "Enter task name: ";
-            cin >> name;
-            cout << "Enter task position (x y): ";
-            cin >> taskpos[0] >> taskpos[1];
-            depot.insertDroneTask(idx, idx2, name, taskpos);
-            break;
-        case 12: // Copy-Paste Drone
-            cout << "which drone do you want to copy-paste?\n" << endl;
-            cout << "Enter index of source drone: ";
-            cin >> idx;
-            cout << "Enter index of destination drone: ";
-            cin >> idx2;
-            depot.copyDrone(idx, idx2);
-            break;
-        case 13: // Display All Drones' names
-            depot.printAllNames();
-            break;
-        case 14: // Sort Drone Data Ascending
-            depot.sortDroneDataAscending(idx);
-            break;
-        case 15: // Sort Drone Data Descending
-            depot.sortDroneDataDescending(idx);
-            break;
-        case 16: // Exit
-            cout << "Exiting program." << endl;
-            break;
-        default:
-            cout << "Invalid option. Please try again." << endl;
-            break;
+                int foundIndexID = depot.searchDroneByID(id);
+                if (foundIndexID >= 0) {
+                    cout << "Drone with ID " << id << " found." << endl;
+                } else {
+                    cout << "Drone with ID " << id << " not found." << endl;
+                }
+            } break;
+            case 9: // Write Depot to file
+                depot.writeDepotToFile();
+                break;
+            case 10: // Swap Drone Data
+                cout << "which two drones do you want to swap?\n" << endl;
+                cout << "Enter ID of first drone: ";
+                cin >> id1;
+                cout << "Enter ID of second drone: ";
+                cin >> id2;
+                depot.swapDroneData(id1, id2);
+                break;
+            case 11: // Insert Drone Task
+                cout << "Enter drone index: ";
+                //int droneidx, int taskidx, string& task, int task_pos[2]
+                cin >> idx;
+                cout << "Enter task index: ";
+                cin >> idx2;
+                cout << "Enter task name: ";
+                cin >> name;
+                cout << "Enter task position (x y): ";
+                cin >> taskpos[0] >> taskpos[1];
+                depot.insertDroneTask(idx, idx2, name, taskpos);
+                break;
+            case 12: // Copy-Paste Drone
+                cout << "which drone do you want to copy-paste?\n" << endl;
+                cout << "Enter index of source drone: ";
+                cin >> idx;
+                cout << "Enter index of destination drone: ";
+                cin >> idx2;
+                depot.copyDrone(idx, idx2);
+                break;
+            case 13: // Display All Drones' names
+                depot.printAllNames();
+                break;
+            case 14: // Sort Drone Data Ascending
+                depot.sortDroneDataAscending(idx);
+                break;
+            case 15: // Sort Drone Data Descending
+                depot.sortDroneDataDescending(idx);
+                break;
+            case 16: // Exit
+                cout << "Exiting program." << endl;
+                break;
+            default:
+                cout << "Invalid option. Please try again." << endl;
+                break;
+        }
     }
     infile.close();
     outfile.close();
