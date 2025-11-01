@@ -53,7 +53,7 @@ int main () {
 
     int choice = 0;
 
-    int id, id1, id2, idx, idx2, taskpos[2];
+    int id, id1, id2, idx, idx2, taskpos[2], index1, index2;
 
     
     i = 0;
@@ -145,11 +145,11 @@ int main () {
                 break;
             case 10: // Swap Drone Data
                 cout << "which two drones do you want to swap?\n" << endl;
-                cout << "Enter ID of first drone: ";
-                cin >> id1;
-                cout << "Enter ID of second drone: ";
-                cin >> id2;
-                depot.swapDroneData(id1, id2);
+                cout << "Enter index of first drone: ";
+                cin >> index1;
+                cout << "Enter index of second drone: ";
+                cin >> index2;
+                depot.swapDroneData(index1, index2);
                 break;
             case 11: // Insert Drone Task
                 cout << "Enter drone index: ";
