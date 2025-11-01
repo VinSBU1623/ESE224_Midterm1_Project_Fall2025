@@ -8,6 +8,8 @@
 
 using namespace std;
 
+#define MAX_TASKS 5
+
 int main () {
     ifstream infile("Drone.txt");
     ofstream outfile("Output.txt");
@@ -100,6 +102,15 @@ int main () {
                 cin >> id;
                 cout << "Enter initial position in format x y: ";
                 cin >> x >> y;
+
+                for (int index = 0; index < MAX_TASKS; ++index) { //we don't want index to be out of bounds
+                    cout << "Enter task " << index + 1 << " name: ";
+                    cin >> tasks[index];
+                    cout << "Enter task " << index + 1 << " position (x y): ";
+                    cin >> task_positions[index][0] >> task_positions[index][1];
+                    newDrone.setTaskAtIndex(tasks[index], index);
+                    newDrone.setTaskPositionAtIndex(task_positions[index][0], task_positions[index][1], index);
+                }
 
                 newDrone.setName(name);
                 newDrone.setID(id);
