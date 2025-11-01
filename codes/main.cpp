@@ -127,6 +127,7 @@ int main () {
             } break;
             case 9: // Write Depot to file
                 depot.writeDepotToFile();
+                cout << "Depot written to file." << endl;
                 break;
             case 10: // Swap Drone Data
                 cout << "which two drones do you want to swap?\n" << endl;
@@ -160,10 +161,16 @@ int main () {
                 depot.printAllNames();
                 break;
             case 14: // Sort Drone Data Ascending
+                cout << "Enter index of drone to sort: ";
+                cin >> idx;
                 depot.sortDroneDataAscending(idx);
+                depot.getDrone(idx).displayDrone();  // Show the results
                 break;
             case 15: // Sort Drone Data Descending
+                cout << "Enter index of drone to sort: ";
+                cin >> idx;
                 depot.sortDroneDataDescending(idx);
+                depot.getDrone(idx).displayDrone();  // Show the results
                 break;
             case 16: // Exit
                 cout << "Exiting program." << endl;
