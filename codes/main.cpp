@@ -90,11 +90,25 @@ int main () {
                 cout << "Drones order randomized." << endl;
                 depot.printAllNames();
                 break;
-            case 5: // Add Drone
-                depot.addDrone(depot.getDrone(i)); //assuming adding a new drone at index i
-                cout << "Drone added." << endl;
-                i++;
-                break;
+            case 5:{ // Add Drone
+                Drone newDrone;
+                int id, x, y;
+                string name;
+                cout << "New Name: ";
+                cin >> name;
+                cout << "New ID: ";
+                cin >> id;
+                cout << "Enter initial position in format x y: ";
+                cin >> x >> y;
+
+                newDrone.setName(name);
+                newDrone.setID(id);
+                newDrone.setInitPositionAtIndex(x, 0);
+                newDrone.setInitPositionAtIndex(x, 1);
+                depot.addDrone(newDrone);
+
+                cout << "Drone added!" << endl;
+                }break;
             case 6: // Retrieve a drone
                 cout << "Enter index of drone to retrieve: ";
                 cin >> idx;
