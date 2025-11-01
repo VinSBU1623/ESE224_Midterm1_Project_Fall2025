@@ -153,7 +153,6 @@ int main () {
                 break;
             case 11: // Insert Drone Task
                 cout << "Enter drone index: ";
-                //int droneidx, int taskidx, string& task, int task_pos[2]
                 cin >> idx;
                 cout << "Enter task index: ";
                 cin >> idx2;
