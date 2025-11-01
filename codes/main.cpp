@@ -67,7 +67,7 @@ int main () {
         if (cin.fail()){
             cin.clear();
             cin.ignore(1000, '\n');
-            choice = 20;
+            choice = 20; //Any non int input can be handled as an out of bounds
         }
         switch (choice){
             case 1: // Sort Drones By Name
@@ -177,7 +177,6 @@ int main () {
     outfile.close();
 
     return 0;
-
 }
 
 /*
