@@ -15,10 +15,6 @@ class Depot {
         void sortByName(); //manually, ascending
         void sortByID(); //manually, ascending
         void sortByPosition(); //manually, ascending by distance from origin
-        //Note: Sort the vector of drones by name/ID/position(ascending order,
-        // assuming the distance is between the origin and the initial position of the
-        // drone). Do not use vector class functions to sort automatically. You can
-        // choose your sorting algorithm.
         int searchDroneByName(string& name); //Binary search
         int searchDroneByID(int id); //Binary search
         void swapDroneData(int index1, int index2);
