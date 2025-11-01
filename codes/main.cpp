@@ -12,8 +12,7 @@ using namespace std;
 
 int main () {
     ifstream infile("Drone.txt");
-    ofstream outfile("Output.txt");
-    if(!infile || !outfile){
+    if(!infile){
         cout << "Error opening files!" << endl;
         return 1;
     }
@@ -205,7 +204,6 @@ int main () {
         }
     }
     infile.close();
-    outfile.close();
 
     return 0;
 }
