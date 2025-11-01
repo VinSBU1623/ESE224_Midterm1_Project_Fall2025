@@ -79,12 +79,3 @@ MedicalKitDelivery 52 47
 EmergencyShipment 40 43
 
 
-Vin 667
-6 7
-FoodPackage 9 16
-CargoTransfer 23 14
-MedicalKitDelivery 20 12
-EmergencyShipment 65 42
-Testing 23 14
-
-

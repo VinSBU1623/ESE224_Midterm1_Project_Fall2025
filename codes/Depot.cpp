@@ -10,13 +10,13 @@ using namespace std;
 
 
 void Depot::addDrone(Drone& d1){
-    drones.push_back(d1);
+    drones.push_back(d1);   // add drone to the vector
 }
 Drone& Depot::getDrone(int index){
-    return drones.at(index);
+    return drones.at(index);    // returns the reference to the drone (at the given index)
 }
 void Depot::sortByName(){
-    for (int i = 0; i < drones.size() - 1; i++) {
+    for (int i = 0; i < drones.size() - 1; i++) {   //selection sort
         int minIndex = i;
         for (int j = i + 1; j < drones.size(); j++) {
             if (drones[j].getName() < drones[minIndex].getName()) {
@@ -32,8 +32,8 @@ void Depot::sortByName(){
     }
 }
 
-void Depot::sortByID(){
-    for (int i = 0; i < drones.size() - 1; i++) {
+void Depot::sortByID(){ 
+    for (int i = 0; i < drones.size() - 1; i++) {   // selection sort
         int minIndex = i;
         for (int j = i + 1; j < drones.size(); j++) {
             if (drones[j].getID() < drones[minIndex].getID()) {
@@ -50,7 +50,7 @@ void Depot::sortByID(){
 }
 
 void Depot::sortByPosition(){
-    for (int i = 0; i < drones.size() - 1; i++) {
+    for (int i = 0; i < drones.size() - 1; i++) {   // selection sort
         int minIndex = i;
         for (int j = i + 1; j < drones.size(); j++) {
             if (sqrt(pow(drones[j].getInitPosition()[0], 2) + pow(drones[j].getInitPosition()[1], 2)) < 
@@ -67,7 +67,7 @@ void Depot::sortByPosition(){
     }
 }
 
-int Depot::searchDroneByName(string& name){
+int Depot::searchDroneByName(string& name){     // utilizes binary search!
     int left = 0;
     int right = drones.size() - 1;
     while (left <= right) {
@@ -83,8 +83,8 @@ int Depot::searchDroneByName(string& name){
     }
     return -1;
 }
-int Depot::searchDroneByID(int id){
-    int left = 0;
+int Depot::searchDroneByID(int id){     // utilizes binary search!
+    int left = 0;   
     int right = drones.size() - 1;
     while (left <= right) {
         int mid = (left + right) / 2;
@@ -99,11 +99,11 @@ int Depot::searchDroneByID(int id){
     }
     return -1;
 }
-void Depot::swapDroneData(int index1, int index2){
+void Depot::swapDroneData(int index1, int index2){     // uses operator overload (-) to swap data. 
     drones.at(index1) - drones.at(index2);
 }
 
-void Depot::copyDrone(int index1, int index2){
+void Depot::copyDrone(int index1, int index2){      // uses operator overload (<<) to copy data.
     drones.at(index2)<<drones.at(index1);
 }
 
