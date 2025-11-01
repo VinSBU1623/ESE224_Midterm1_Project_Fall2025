@@ -1,28 +1,10 @@
-Zed 87
-18 33
-ExpressDrop 22 38
-PackageDelivery 10 15
-MedicalKitDelivery 8 25
-DocumentCourier 12 30
-SparePartsDelivery 20 28
-
-
-Zed 87
-18 33
-ExpressDrop 22 38
-PackageDelivery 10 15
-MedicalKitDelivery 8 25
-DocumentCourier 12 30
-SparePartsDelivery 20 28
-
-
-Brandon 102
-12 26
-MedicalKitDelivery 30 10
-FoodPackage 20 40
-EmergencyShipment 25 15
-SparePartsDelivery 18 22
-DocumentCourier 12 30
+Tan 669
+3 3
+ 42 50
+ 48 40
+ 50 55
+ 52 47
+ 40 43
 
 
 Echo 105
@@ -34,22 +16,31 @@ MedicalKitDelivery 20 10
 ExpressDrop 12 18
 
 
-Ivy 109
-45 45
-ExpressDrop 42 50
-Delivery 48 40
-ParcelDispatch 50 55
-MedicalKitDelivery 52 47
-EmergencyShipment 40 43
+Bernie 380
+12 14
+FoodPackage 15 18
+PackageDelivery 10 20
+SparePartsDelivery 8 12
+CargoTransfer 18 22
+SupplyDrop 20 16
 
 
-Charlie 123
-18 42
-ExpressDrop 22 48
-PackageDelivery 10 32
-FoodPackage 8 45
-DocumentCourier 20 38
-SparePartsDelivery 12 50
+Brandon 102
+12 26
+MedicalKitDelivery 30 10
+FoodPackage 20 40
+EmergencyShipment 25 15
+SparePartsDelivery 18 22
+DocumentCourier 12 30
+
+
+Zed 87
+18 33
+ExpressDrop 22 38
+PackageDelivery 10 15
+MedicalKitDelivery 8 25
+DocumentCourier 12 30
+SparePartsDelivery 20 28
 
 
 Chris 128
@@ -61,13 +52,22 @@ EmergencyShipment 20 20
 CargoTransfer 30 35
 
 
-Alpha 131
-60 75
-CargoTransfer 55 60
-PackageDelivery 45 50
-SupplyDrop 70 80
-EmergencyShipment 65 70
-DocumentCourier 50 65
+Charlie 123
+18 42
+ExpressDrop 22 48
+PackageDelivery 10 32
+FoodPackage 8 45
+DocumentCourier 20 38
+SparePartsDelivery 12 50
+
+
+Ivy 109
+45 45
+ExpressDrop 42 50
+Delivery 48 40
+ParcelDispatch 50 55
+MedicalKitDelivery 52 47
+EmergencyShipment 40 43
 
 
 Aeron 201
@@ -79,12 +79,21 @@ SupplyDrop 20 35
 CargoTransfer 12 18
 
 
-Bernie 380
-12 14
-FoodPackage 15 18
-PackageDelivery 10 20
-SparePartsDelivery 8 12
-CargoTransfer 18 22
-SupplyDrop 20 16
+Vin 667
+67 67
+ 42 50
+ 48 40
+ 50 55
+ 52 47
+ 40 43
+
+
+Alpha 131
+60 75
+CargoTransfer 55 60
+PackageDelivery 45 50
+SupplyDrop 70 80
+EmergencyShipment 65 70
+DocumentCourier 50 65
 
 

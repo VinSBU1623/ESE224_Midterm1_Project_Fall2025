@@ -104,7 +104,7 @@ int main () {
                 newDrone.setName(name);
                 newDrone.setID(id);
                 newDrone.setInitPositionAtIndex(x, 0);
-                newDrone.setInitPositionAtIndex(x, 1);
+                newDrone.setInitPositionAtIndex(y, 1);
                 depot.addDrone(newDrone);
 
                 cout << "Drone added!" << endl;
